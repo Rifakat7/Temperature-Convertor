@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body {
+        background-color: yellowgreen;
+        padding: 50px 100px;
+      }
+      h1 {
+        text-align: center;
+      }
+      #container {
+        text-align: center;     
+        /* for input center */
+        background-color: #1abc9c;
+        padding: 50px;
+      }
+      .input-div {
+        display: inline-block;
+        /* for both divs */
+      }
+      .inp {
+        padding: 5px 10px;
+        margin: 10px;
+        font-size: 30px;
+        font-weight: bold;
+        width: 250px;
+        text-align: center;
+        background-color: rgb(169, 183, 212);
+        border-radius: 5px;
+        border: 2px solid black;
+      }
+      label {
+        font-size: 23px;
+        font-weight: bold;
+        color: rgb(3, 15, 0);
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>temperature convertor</title>
+  </head>
+  <body>
+    <h1>Temperature Convertor</h1>
+    
+    <!-- basic structure -->
+    <div id="container">
+      <div class="input-div">
+        <label>Celsius:</label><br />
+        <input type="number" id="cel" value="0" class="inp" />
+      </div>
+      <div class="input-div">
+        <label>farenheit:</label><br />
+        <input type="number" id="fah" value="32" class="inp" />
+      </div>
+      <a href="https://tempconvrtr.netlify.app/" target="_blank">see live</a>   
+      <!-- netlify live link -->
+    </div>
+    <script>
+      var cel = document.getElementById("cel");      // input 
+      var fah = document.getElementById("fah");      // input 
+      
+
+      cel.addEventListener("input", function () {     // added event on every change in  celsius input 
+        let c = this.value;
+        let f = (c * 9/5) + 32;                      // took from google
+        if(!Number.isInteger(f)){        //   checking if this is not an ineteger
+            f = f.toFixed(4);               // fixing to 4 decimal points
+        }
+        fah.value = f;
+
+      });
+
+      fah.addEventListener("input", function () {  // added event on every change in  farenheit input 
+        let f = this.value;
+        let c = (f - 32) * 5/9;                      // took from google
+        if(!Number.isInteger(c)){           //   checking if this is not an ineteger
+            c = c.toFixed(4);                    // fixing to 4 decimal points
+        }
+        cel.value=c;
+      });
+    </script>
+  </body>
+</html>
